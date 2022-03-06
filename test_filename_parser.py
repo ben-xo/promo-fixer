@@ -6,8 +6,6 @@ CASES = [
     #  (label, artist, title)),
 
     # 2 parts with spaces
-    ('L-Side - Inna Di Dance.wav',
-     ('', 'L-Side', 'Inna Di Dance')),
     ('Abstr4ct - Hot Up.wav',
      ('', 'Abstr4ct', 'Hot Up')),
     ('Creatures - Swamp Martian (Original Mix).wav',
@@ -16,6 +14,12 @@ CASES = [
      ('', 'T.R.A.C.', 'The Pursuit feat. Paul SG & MC Conrad (Artificial Intelligence Remix)')),
     ('Unkoded - Wax It!!.wav',
      ('', 'Unkoded', 'Wax It!!')),
+
+    # 2 parts with spaces where artist contains a hyphen
+    ('L-Side - Inna Di Dance.wav',
+     ('', 'L-Side', 'Inna Di Dance')),
+    ('A-Audio - Stop Right There.wav',
+     ('', 'A-Audio', 'Stop Right There')),
 
     # double-space implies missing ampersand
     ('Simplification  nCamargo - Listen Up (Sl8r Remix).wav',
