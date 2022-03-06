@@ -11,11 +11,14 @@ from tag_updater import TagUpdater
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Convert wavs into tagged aiffs by being clever.')
-    parser.add_argument('--dir', help='location of wav files to fix')
+    parser.add_argument('--dir', help='location of wav files to fix', default='.')
     parser.add_argument('--dry-run', help="don't do it for real", action='store_true')
 
     args = parser.parse_args()
     os.chdir(args.dir)
+
+    if args.dry_run:
+        print("** dry-run **")
 
     # assess metadata from filename
     fnps = {}
@@ -50,7 +53,8 @@ if __name__ == '__main__':
         # write tags to AIFF
         fnp = fnps[wavfile]
         print(f"Tagging {outfile} with artist='{fnp.artist}', title='{fnp.title}', album='{fnp.label}'")
-        tagger.update_tag(outfile, artist=fnp.artist, title=fnp.title, album=fnp.label, dry_run=args.dry_run)
+        if not args.dry_run:
+            tagger.update_tag(outfile, artist=fnp.artist, title=fnp.title, album=fnp.label)
 
         print("**")
         print("")
