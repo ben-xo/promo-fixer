@@ -20,10 +20,12 @@ class FilenameGroupNormaliser:
 
         # start a list of fnps with titles that are identical.
         while len(three_part_fnps):
-            identical_titles = [three_part_fnps.pop()]
-            for fnp in three_part_fnps:
-                if fnp.title == identical_titles[0].title and fnp.artist != identical_titles[0].artist:
-                    identical_titles.append(fnp)
+
+            # the first three_part_fnp will always go into this list. But will there be more?
+            identical_titles = [three_part_fnps[0]] + [
+                fnp for fnp in three_part_fnps[1:]
+                if fnp.title == three_part_fnps[0].title and fnp.artist != three_part_fnps[0].artist
+            ]
 
             if len(identical_titles) > 1:
                 # at least 2 files have the same title but different artists.
@@ -32,7 +34,8 @@ class FilenameGroupNormaliser:
                     (fnp.label, fnp.artist, fnp.title) = (fnp.title, fnp.label, fnp.artist)
                     mutation_count += 1
 
-                for fnp in identical_titles[1:]:
-                    three_part_fnps.remove(fnp)
+            # base case is equivalent to .pop() the first element
+            for fnp in identical_titles:
+                three_part_fnps.remove(fnp)
 
         return mutation_count
