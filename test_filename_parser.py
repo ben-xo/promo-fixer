@@ -36,6 +36,10 @@ CASES = [
      ('D9REC110', 'Quadrant & Iris & Jamal', 'Dial Back (Original Mix)')),
     ('TRUST025_Trex_&_Benny_V_-_Tundra_(Myth_Remix).wav',
      ('TRUST025', 'Trex & Benny V', 'Tundra (Myth Remix)')),
+
+    # lonely 't' implies missing apostrophe
+    ('BBEXCL25_Black_Barrel_-_Steal_Kill_But_Don_t_Mess_With_Drugs.wav',
+     ('BBEXCL25', 'Black Barrel', 'Steal Kill But Don\'t Mess With Drugs')),
 ]
 
 

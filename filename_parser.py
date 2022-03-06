@@ -67,7 +67,7 @@ class FilenameParser:
         return m
 
     def normalise(self, part: str) -> str:
-        return part.replace('  ', ' & ').replace(' w ', ' w/')
+        return part.replace('  ', ' & ').replace(' w ', ' w/').replace(' t ', "'t ")
 
     def normalise_underscore(self, part: str) -> str:
         return self.normalise(part.replace('_', ' '))
