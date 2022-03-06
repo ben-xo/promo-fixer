@@ -46,7 +46,7 @@ if __name__ == '__main__':
             infile_escaped = shlex.quote(wavfile)
             outfile_escaped = shlex.quote(outfile)
 
-            os.system(f'ffmpeg -i {infile_escaped} {outfile_escaped}')
+            os.system(f'ffmpeg -loglevel error -i {infile_escaped} {outfile_escaped}')
         else:
             print(f"(--dry-run) would have encoded {wavfile} to {outfile}")
 

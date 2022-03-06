@@ -9,6 +9,7 @@ class TagUpdater:
 
         try:
             f = mutagen.File(filename)
+            f.add_tags()
             f.tags.add(TIT2(text=[title]))
             f.tags.add(TALB(text=[album]))
             f.tags.add(TPE1(text=[artist]))
