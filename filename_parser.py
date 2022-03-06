@@ -13,7 +13,7 @@ class FilenameParser:
     def match_3part_underscores(self) -> Optional[Match[str]]:
         m = re.match(r'^(?:\d+_(?:-_)?)?(?P<label>[a-zA-Z0-9]{2,}(?:_+[a-zA-Z0-9()]+)*)_*-_*'
                      r'(?P<artist>[a-zA-Z0-9.,&-]+(?:_+[a-zA-Z0-9().,&-]+)*)_*-_*'
-                     r'(?P<title>[a-zA-Z0-9.,&]+(?:_+[a-zA-Z0-9().,&]+)*)\.',
+                     r'(?P<title>[a-zA-Z0-9.,&]+(?:_+[a-zA-Z0-9().,&!]+)*)\.',
                      self.infile)
         if m:
             self.label = self.normalise_underscore(m.group('label'))
@@ -25,7 +25,7 @@ class FilenameParser:
     def match_3part_underscores_cat_no_variation(self) -> Optional[Match[str]]:
         m = re.match(r'^(?:\d+_(?:-_)?)?(?P<label>[A-Z0-9]{2,})_'
                      r'(?P<artist>[a-zA-Z0-9.,&-]+(?:_+[a-zA-Z0-9().,&-]+)*)_*-_*'
-                     r'(?P<title>[a-zA-Z0-9.,&]+(?:_+[a-zA-Z0-9().,&]+)*)\.',
+                     r'(?P<title>[a-zA-Z0-9.,&]+(?:_+[a-zA-Z0-9().,&!]+)*)\.',
                      self.infile)
         if m:
             self.label = self.normalise_underscore(m.group('label'))
@@ -36,7 +36,7 @@ class FilenameParser:
 
     def match_2part_underscores(self) -> Optional[Match[str]]:
         m = re.match(r'^(?:\d+_(?:-_)?)?(?P<artist>[a-zA-Z0-9.,&-]+(?:_+[a-zA-Z0-9().,&-]+)*)_*-_*'
-                     r'(?P<title>[a-zA-Z0-9.,&]+(?:_+[a-zA-Z0-9().,&]+)*)\.',
+                     r'(?P<title>[a-zA-Z0-9.,&]+(?:_+[a-zA-Z0-9().,&!]+)*)\.',
                      self.infile)
         if m:
             self.artist = self.normalise_underscore(m.group('artist'))
@@ -47,7 +47,7 @@ class FilenameParser:
     def match_3part_spaces(self) -> Optional[Match[str]]:
         m = re.match(r'^(?:\d+\s(?:-\s)?)?(?P<label>[a-zA-Z0-9]{2,}(?:\s+[a-zA-Z0-9()]+)*)\s+-\s+'
                      r'(?P<artist>[a-zA-Z0-9.,&-]+(?:\s+[a-zA-Z0-9().,&-]+)*)\s*-\s*'
-                     r'(?P<title>[a-zA-Z0-9.,&]+(?:\s+[a-zA-Z0-9().,&]+)*)\.',
+                     r'(?P<title>[a-zA-Z0-9.,&]+(?:\s+[a-zA-Z0-9().,&!]+)*)\.',
                      self.infile)
         if m:
             self.label = self.normalise(m.group('label'))
@@ -58,7 +58,7 @@ class FilenameParser:
 
     def match_2part_spaces(self) -> Optional[Match[str]]:
         m = re.match(r'^(?:\d+\s(?:-\s)?)?(?P<artist>[a-zA-Z0-9.,&-]+(?:\s+[a-zA-Z0-9().,&-]+)*)\s*-\s*'
-                     r'(?P<title>[a-zA-Z0-9.,&]+(?:\s+[a-zA-Z0-9().,&]+)*)\.',
+                     r'(?P<title>[a-zA-Z0-9.,&]+(?:\s+[a-zA-Z0-9().,&!]+)*)\.',
                      self.infile)
         if m:
             self.artist = self.normalise(m.group('artist'))
