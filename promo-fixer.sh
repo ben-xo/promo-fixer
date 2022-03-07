@@ -15,6 +15,6 @@ if [[ ! "$FIRST_INSTALL" == "" ]]; then
   pip3 install -r "${SCRIPT_DIR}"/requirements.txt
 fi
 
-python3 "${SCRIPT_DIR}"/promo_fixer.py --dir "$@"
+python3 "${SCRIPT_DIR}"/promo_fixer.py "$@"
 
 deactivate
